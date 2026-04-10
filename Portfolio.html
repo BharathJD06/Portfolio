@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rajbharath Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+<!-- ICONS -->
+<script src="https://kit.fontawesome.com/4a3b1f73a2.js" crossorigin="anonymous"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0b0c10;color:white;}
+
+#tsparticles{position:fixed;width:100%;height:100%;z-index:-1;}
+
+/* NAVBAR CENTER */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 12px 20px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.nav a {
+  font-size: 26px;
+  color: white;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.nav a:hover {
+  color: #00c6ff;
+  text-shadow: 0 0 10px #00c6ff;
+  transform: scale(1.2);
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+.profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;     /* circle */
+  object-fit: cover;
+  border: 4px solid #00c6ff;
+  margin-bottom: 20px;
+}
+h1{
+font-size:70px;
+color:#00c6ff;
+}
+#typing{
+margin-top:15px;color:#aaa;font-size:18px;
+max-width:800px;
+}
+
+/* BUTTONS */
+.buttons{margin-top:20px;}
+.btn{
+padding:10px 20px;
+border:1px solid white;
+border-radius:25px;
+margin:10px;
+color:white;
+text-decoration:none;
+}
+
+/* SECTIONS */
+section{padding:70px 10%;}
+
+/* SKILLS */
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;margin-top:30px;
+}
+.skill{
+background:#111;padding:15px;border-radius:10px;text-align:center;
+}
+.skill i {
+  margin-right: 8px;
+  color: #00c6ff;     /* blue highlight */
+  font-size: 18px;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.skill:hover {
+  background: #00c6ff;
+  color: black;
+  transform: scale(1.05);
+}
+
+.skill:hover i {
+  color: black;
+}
+
+/* EXPERIENCE */
+.exp{
+margin-top:25px;
+padding:20px;
+border-left:4px solid #00c6ff;
+background:#111;
+}
+.exp-header{
+display:flex;
+justify-content:space-between;
+font-weight:bold;
+}
+.exp ul{margin-top:10px;color:#bbb;padding-left:20px;}
+
+/* PROJECT GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-top:40px;
+}
+
+.project{
+background:#111;
+border-radius:10px;
+padding:10px;
+}
+
+.project img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.project p {
+  text-align: center;
+  min-height: 50px;
+}
+
+.project-video {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.fullscreen {
+  position: absolute;
+  bottom: 8px;   /* ✅ moved down */
+  right: 8px;
+  background: rgba(0,0,0,0.7);
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.fullscreen:hover {
+  background: #00c6ff;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  justify-content: center;
+  align-items: center;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.modal .arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 30px;
+}
+.modal .left { left: 20px; }
+.modal .right { right: 20px; }
+/* SLIDER */
+.slider { position: relative; }
+.arrow { position: absolute; top: 50%;
+   transform: translateY(-50%); 
+background: rgba(0,0,0,0.7);
+ padding: 6px 10px; 
+ cursor: pointer; 
+ color: white; 
+ font-size: 18px; 
+ border-radius: 5px; } 
+ .left { left: 5px; } 
+ .right { right: 5px; } 
+ .arrow:hover { 
+  background: #00c6ff; }
+
+@media(max-width:900px){
+.grid{grid-template-columns:repeat(2,1fr);}
+}
+
+.certificates {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.cert-card {
+  background: linear-gradient(145deg, #111, #1a1a1a);
+  padding: 25px;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.cert-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 25px #00c6ff;
+}
+
+.cert-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.cert-card p {
+  font-size: 15px;
+}
+
+.cert-card:hover {
+  background: #00c6ff;
+  color: black;
+  transform: scale(1.05);
+}
+
+.cert-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+}
+
+.cert-modal iframe {
+  width: 90%;
+  height: 90%;
+  margin: 5% auto;
+  display: block;
+  border: none;
+}
+
+.cert-modal .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="tsparticles"></div>
+
+<!-- NAV -->
+<div class="nav">
+<a href="https://www.linkedin.com/in/rajbharath-paramasivan-522729264" target="_blank">
+  <i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/BharathJD06" target="_blank">
+  <i class="fab fa-github"></i>
+</a>
+<a href="mailto:bharathathlete81@gmail.com">
+  <i class="fas fa-envelope"></i>
+</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+<img src="profile.png" class="profile">
+<h1>Rajbharath P</h1>
+<p id="typing"></p>
+
+<div class="buttons">
+<a href="Rajbharath_Resume.pdf" download class="btn">
+  <i class="fas fa-file-pdf"></i> Resume
+</a>
+<a href="Rajbharath_Cover_Letter.pdf" download class="btn">
+  <i class="fas fa-file-alt"></i> Cover Letter
+</a>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section>
+<h2 style="text-align:center;">Skills</h2>
+<div class="skills">
+<div class="skill"><i class="fab fa-python"></i> Python</div>
+<div class="skill"><i class="fas fa-database"></i> SQL</div>
+<div class="skill"><i class="fas fa-chart-bar"></i> Power BI</div>
+<div class="skill"><i class="fas fa-chart-line"></i> Tableau</div>
+<div class="skill"><i class="fas fa-file-excel"></i> Excel</div>
+<div class="skill"><i class="fas fa-brain"></i> Machine Learning</div>
+<div class="skill"><i class="fas fa-search"></i> EDA</div>
+<div class="skill"><i class="fas fa-cogs"></i> ETL</div>
+<div class="skill"><i class="fas fa-project-diagram"></i> Data Modeling</div>
+<div class="skill"><i class="fab fa-aws"></i> AWS</div>
+<div class="skill"><i class="fab fa-microsoft"></i> Azure</div>
+<div class="skill"><i class="fas fa-database"></i> MySQL</div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+<h2 style="text-align:center;">Experience</h2>
+
+<div class="exp">
+<div class="exp-header">
+<span>Data Analyst (Co-op) | Synod Intellicare | Brantford</span>
+<span>March 2026 - Present</span>
+</div>
+<ul>
+<li>Analyzed 10,000+ healthcare records using SQL and Python to identify trends, anomalies, and data inconsistencies.</li>
+<li>Built machine learning models to detect bias, improving fairness metrics by 15–25% across demographic groups.</li>
+<li>Developed 5+ interactive dashboards using AWS Quicksight, Power BI and Tableau, reducing reporting time by 40%.</li>
+<li>Performed data cleaning, transformation, and validation to ensure high-quality datasets for decision-making</li>
+<li>Collaborated with stakeholders to translate business requirements into data-driven insights.</li>
+</ul>
+</div>
+
+<div class="exp">
+<div class="exp-header">
+<span>Vice President (Operations) | UNF Residence | Niagara Falls</span>
+<span>April 2025 - March 2026</span>
+</div>
+<ul>
+<li>Managed operations for 100+ residents, improving service efficiency by 20% through data-driven strategies</li>
+<li>Implemented workflow tracking systems, reducing issue resolution time by 25%.</li>
+<li>Generated operational reports and dashboards to support strategic planning and resource allocation.</li>
+<li>Strengthened stakeholder communication and process optimization.</li>
+</ul>
+</div>
+
+<div class="exp">
+<div class="exp-header">
+<span>Business Analyst Intern | Saiket System | Remote</span>
+<span>Jan 2026 - Feb 2026</span>
+</div>
+<ul>
+<li>Conducted business process analysis to identify inefficiencies, improving operational performance by 15%.</li>
+<li>Applied data analysis techniques to deliver actionable insights for business stakeholders.</li>
+</ul>
+</div>
+
+<div class="exp">
+<div class="exp-header">
+<span>Data Administrative | Rahul Education | Mumbai</span>
+<span>July 2023 - Dec 2024</span>
+</div>
+<ul>
+<li>Managed and validated 5,000+ records, improving data accuracy by 30%</li>
+<li>Performed data cleaning and preprocessing to enhance reporting quality</li>
+<li>Supported reporting automation and improved data handling efficiency</li>
+<li>Coordinated data tracking for 20+ annual events</li>
+</ul>
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+<section>
+<h2 style="text-align:center;">Projects</h2>
+
+<div class="grid">
+
+<!-- 1 -->
+<div class="project"><div class="slider">
+<img id="p1" src="images/p1-1.png">
+<span class="arrow left" onclick="slide('p1',-1)">❮</span>
+<span class="arrow right" onclick="slide('p1',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p1')">⛶</span>
+</div><p>Advance Analysis of Sales Market</p></div>
+
+<!-- 2 -->
+<div class="project"><div class="slider">
+<img id="p2" src="images/p2-1.png">
+<span class="arrow left" onclick="slide('p2',-1)">❮</span>
+<span class="arrow right" onclick="slide('p2',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p2')">⛶</span>
+</div><p>AI Usage Analysis</p></div>
+
+<!-- 3 -->
+<div class="project"><div class="slider">
+<img id="p3" src="images/p3-1.png">
+<span class="arrow left" onclick="slide('p3',-1)">❮</span>
+<span class="arrow right" onclick="slide('p3',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p3')">⛶</span>
+</div><p>Bank Transaction Analysis</p></div>
+
+<!-- 4 -->
+<div class="project"> <div class="slider"> 
+  <video id="p4" class="project-video" controls playsinline>
+  <source src="images/p4-1.mp4" type="video/mp4">
+</video>
+  </div> <p>Crew Optimizer (Dantzig Wolfe)</p> </div>
+
+<!-- 5 -->
+<div class="project"><div class="slider">
+<img id="p5" src="images/p5-1.png">
+<span class="arrow left" onclick="slide('p5',-1)">❮</span>
+<span class="arrow right" onclick="slide('p5',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p5')">⛶</span>
+</div><p>E-Commerce Analysis</p></div>
+
+<!-- 6 -->
+<div class="project"><div class="slider">
+<img id="p6" src="images/p6-1.png">
+<span class="arrow left" onclick="slide('p6',-1)">❮</span>
+<span class="arrow right" onclick="slide('p6',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p6')">⛶</span>
+</div><p>Global Electricity Supply Analysis</p></div>
+
+<div class="project">
+  <div class="slider">
+    <img id="p7" src="images/p7-1.png">
+
+    <span class="arrow left" onclick="slide('p7',-1)">❮</span>
+    <span class="arrow right" onclick="slide('p7',1)">❯</span>
+    <span class="fullscreen" onclick="openImage('p7')">⛶</span>
+  </div>
+
+  <p>Finance Economic Analysis</p>
+</div>
+<!-- 8 -->
+<div class="project"><div class="slider">
+<img id="p8" src="images/p8-1.png">
+<span class="arrow left" onclick="slide('p8',-1)">❮</span>
+<span class="arrow right" onclick="slide('p8',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p8')">⛶</span>
+</div><p>Mall Customer Traffic Analysis</p></div>
+
+<!-- 9 -->
+<div class="project"><div class="slider">
+<img id="p9" src="images/p9-1.png">
+<span class="arrow left" onclick="slide('p9',-1)">❮</span>
+<span class="arrow right" onclick="slide('p9',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p9')">⛶</span>
+</div><p>Mobile Market Analysis</p></div>
+
+<!-- 10 -->
+<div class="project"><div class="slider">
+<img id="p10" src="images/p10-1.png">
+<span class="arrow left" onclick="slide('p10',-1)">❮</span>
+<span class="arrow right" onclick="slide('p10',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p10')">⛶</span>
+</div><p>NorthWind Analysis</p></div>
+
+<!-- 11 -->
+<div class="project"><div class="slider">
+<img id="p11" src="images/p11-1.png">
+<span class="arrow left" onclick="slide('p11',-1)">❮</span>
+<span class="arrow right" onclick="slide('p11',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p11')">⛶</span>
+</div><p>Smartphone Market Analysis</p></div>
+
+<!-- 12 -->
+<div class="project"><div class="slider">
+<img id="p12" src="images/p12-1.png">
+<span class="arrow left" onclick="slide('p12',-1)">❮</span>
+<span class="arrow right" onclick="slide('p12',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p12')">⛶</span>
+</div><p>Prediction Analysis of Mobile Market</p></div>
+
+<!-- 13 -->
+<div class="project"><div class="slider">
+<img id="p13" src="images/p13-1.png">
+<span class="arrow left" onclick="slide('p13',-1)">❮</span>
+<span class="arrow right" onclick="slide('p13',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p13')">⛶</span>
+</div><p>Real Estate Business Analysis</p></div>
+
+<!-- 14 -->
+<div class="project"><div class="slider">
+<img id="p14" src="images/p14-1.png">
+<span class="arrow left" onclick="slide('p14',-1)">❮</span>
+<span class="arrow right" onclick="slide('p14',1)">❯</span>
+<span class="fullscreen" onclick="openImage('p14')">⛶</span>
+</div><p>Mobile Sales & Forecasting Analysis</p></div>
+
+</div>
+
+<section class="certificates">
+  <h2>Certificates</h2>
+
+  <div class="cert-grid">
+
+    <div class="cert-card" onclick="openCert('Certificates/British Airways Data Science.pdf')">
+      <div class="cert-icon">📜</div>
+      <p>British Airways Data Science</p>
+    </div>
+
+    <div class="cert-card" onclick="openCert('Certificates/Citi Bank Quantitative Analysis.pdf')">
+      <div class="cert-icon">📜</div>
+      <p>Citi Bank Quantitative Analysis</p>
+    </div>
+
+    <div class="cert-card" onclick="openCert('Certificates/Deloitte Internship.pdf')">
+      <div class="cert-icon">📜</div>
+      <p>Deloitte Internship</p>
+    </div>
+
+    <div class="cert-card" onclick="openCert('Certificates/JP Morgan Chase & Co.pdf')">
+      <div class="cert-icon">📜</div>
+      <p>JP Morgan Chase & Co</p>
+    </div>
+
+    <div class="cert-card" onclick="openCert('Certificates/Tata Gen AI Powered Data Analytics.pdf')">
+      <div class="cert-icon">📜</div>
+      <p>Tata Gen AI Powered Data Analytics</p>
+    </div>
+
+    <div class="cert-card" onclick="openCert('Certificates/Tata Internship Certificate.pdf')">
+      <div class="cert-icon">📜</div>
+      <p>Tata Internship Certificate</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+
+// typing animation
+const text="Data Analyst Student | Ethical AI & Bias Detection | SQL, Python, Power BI, Tableau | Turning Data into Decisions";
+let i=0;
+function type(){
+  if(i<text.length){
+    document.getElementById("typing").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(type,35);
+  }
+}
+type();
+
+// ✅ IMAGE DATA (FIXED)
+const images = {
+  p1:["images/p1-1.png","images/p1-2.png","images/p1-3.png","images/p1-4.png","images/p1-5.png","images/p1-6.png","images/p1-7.png"],
+  p2:["images/p2-1.png","images/p2-2.png"],
+  p3:["images/p3-1.png","images/p3-2.png","images/p3-3.png","images/p3-4.png"],
+  p5:["images/p5-1.png","images/p5-2.png"],
+  p6:["images/p6-1.png","images/p6-2.png","images/p6-3.png","images/p6-4.png","images/p6-5.png"],
+  p7:["images/p7-1.png","images/p7-2.png","images/p7-3.png","images/p7-4.png","images/p7-5.png","images/p7-6.png","images/p7-7.png","images/p7-8.png","images/p7-9.png","images/p7-10.png","images/p7-11.png"],
+
+  // 🔥 FIXED PART
+  p8:["images/p8-1.png"],
+  p9:["images/p9-1.png","images/p9-2.png","images/p9-3.png","images/p9-4.png","images/p9-5.png","images/p9-6.png"],
+  p10:["images/p10-1.png","images/p10-2.png"],
+  p11:["images/p11-1.png","images/p11-2.png","images/p11-3.png","images/p11-4.png"],
+  p12:["images/p12-1.png","images/p12-2.png","images/p12-3.png","images/p12-4.png","images/p12-5.png","images/p12-6.png","images/p12-7.png","images/p12-8.png","images/p12-9.png","images/p12-10.png","images/p12-11.png","images/p12-12.png"],
+  p13:["images/p13-1.png","images/p13-2.png","images/p13-3.png","images/p13-4.png","images/p13-5.png","images/p13-6.png","images/p13-7.png","images/p13-8.png","images/p13-9.png","images/p13-10.png","images/p13-11.png","images/p13-12.png","images/p13-13.png","images/p13-14.png","images/p13-15.png"],
+  p14:["images/p14-1.png","images/p14-2.png","images/p14-3.png"]
+};
+
+// index auto
+let idx={};
+for(let key in images){
+  idx[key]=0;
+}
+
+// slider function
+function slide(id,dir){
+  let arr = images[id];
+  if(!arr || arr.length <= 1) return;
+
+  idx[id]=(idx[id]+dir+arr.length)%arr.length;
+  document.getElementById(id).src=arr[idx[id]];
+}
+
+// particles
+tsParticles.load("tsparticles",{
+  particles:{
+    number:{value:60},
+    color:{value:"#00c6ff"},
+    links:{enable:true,color:"#00c6ff"},
+    move:{enable:true,speed:1}
+  }
+});
+
+function openFullscreen(id){
+  let video = document.getElementById(id);
+
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) {
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) {
+    video.msRequestFullscreen();
+  }
+
+  video.play();
+}
+
+let currentProject = "";
+let modalIndex = 0;
+
+function openImage(id){
+  currentProject = id;
+  modalIndex = idx[id];
+
+  document.getElementById("modal").style.display = "flex";
+  if(images[id]){
+  document.getElementById("modalImg").src = images[id][modalIndex];
+}
+
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+}
+
+function modalSlide(dir){
+  let arr = images[currentProject];
+
+  modalIndex = (modalIndex + dir + arr.length) % arr.length;
+
+  document.getElementById("modalImg").src = arr[modalIndex];
+}
+
+document.getElementById("modal").onclick = function(e){
+  if(e.target.id === "modal"){
+    closeModal();
+  }
+}
+
+for(let key in images){
+  if(images[key].length <= 1){
+    let slider = document.getElementById(key)?.parentElement;
+    if(slider){
+      let arrows = slider.querySelectorAll(".arrow");
+      arrows.forEach(a => a.style.display = "none");
+    }
+  }
+}
+
+function openCert(file){
+  document.getElementById("certModal").style.display = "block";
+  document.getElementById("certFrame").src = file;
+}
+
+function closeCert(){
+  document.getElementById("certModal").style.display = "none";
+  document.getElementById("certFrame").src = "";
+}
+
+window.onload = function(){
+
+  document.getElementById("certModal").onclick = function(e){
+    if(e.target.id === "certModal"){
+      closeCert();
+    }
+  };
+
+};
+
+</script>
+
+<div id="certModal" class="cert-modal">
+  <span class="close" onclick="closeCert()">✖</span>
+  <iframe id="certFrame"></iframe>
+</div>
+
+</body>
+</html>
